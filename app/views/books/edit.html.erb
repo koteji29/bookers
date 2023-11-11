@@ -1,0 +1,29 @@
+<!-- 編集画面 -->
+<h3>Editing Book</h3>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!-- %= form_with model: @book, url: update_book_path(@book.id), method: :patch do |f| % -->
+<%= form_with model:@book do |f| %>
+  <!-- タイトル部分のテキスト入力欄含む -->
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <!-- 本文部分のテキスト入力欄含む -->
+  <p>Body</p>
+  <%= f.text_area :body %>
+  <!-- 更新投稿ボタン -->
+  <p>
+  <%= f.submit 'Update Book' %>
+  </p>
+  <p></p>
+  <span><%= link_to "Show", book_path(@book.id) %></span>
+  <span>|</span>
+  <!-- 一覧へ戻るリンク -->
+  <span><%= link_to "Back", books_path %></span>
+<% end %>

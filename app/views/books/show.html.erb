@@ -1,0 +1,20 @@
+<!-- 詳細画面 -->
+<% if flash[:notice] %>
+  <p id="notice">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+<span>Title:</span>
+<!-- spanは横並び -->
+<span><%= @book.title %></span>
+
+<p></p>
+
+<span>Body:</span>
+<span><%= @book.body %></span>
+<!-- 編集画面に戻るリンク -->
+<p></p>
+<span><%= link_to "Edit", edit_book_path(@book.id) %></span>
+<span>|</span>
+<!-- 一覧へ戻るリンク -->
+<span><%= link_to "Back", books_path %></span>
